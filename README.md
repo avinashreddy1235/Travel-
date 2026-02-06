@@ -1,70 +1,259 @@
-# Getting Started with Create React App
+# 🌍 AI-Powered Smart Travel Booking Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack MERN travel booking platform with an integrated AI Virtual Travel Assistant powered by Google Gemini API. Book trips, hotels, and buses with intelligent recommendations.
 
-## Available Scripts
+![Travel App](client/public/assets/landscape-morning-fog-mountains-with-hot-air-balloons-sunrise.jpg)
 
-In the project directory, you can run:
+## ✨ Features
 
-### `npm start`
+### 🔐 Authentication & Authorization
+- Secure user registration and login with JWT
+- Password hashing with bcrypt
+- Role-based access control (User/Admin)
+- Protected routes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🎫 Travel Services
+- Browse and search trips, hotels, and buses
+- Advanced filtering (type, location, price range)
+- Sorting and pagination
+- Detailed service pages with amenities
+- Service ratings and reviews
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 📅 Booking System
+- Complete booking flow with passenger details
+- View booking history
+- Cancel bookings with refund simulation
+- Status tracking (confirmed, pending, cancelled)
 
-### `npm test`
+### 🤖 AI Virtual Travel Assistant
+- Powered by Google Gemini API
+- Context-aware responses using database data
+- Suggested queries for quick help
+- Fallback mechanism for reliability
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 👨‍💼 Admin Dashboard
+- Dashboard with statistics (users, bookings, revenue)
+- Complete CRUD for travel services
+- User management
+- Booking management
 
-### `npm run build`
+## 🛠️ Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | React.js 18, React Router v6, Axios, React Icons, React Toastify |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB with Mongoose ODM |
+| **Authentication** | JWT (JSON Web Tokens), bcryptjs |
+| **AI Integration** | Google Gemini API (@google/generative-ai) |
+| **Styling** | Custom CSS with CSS Variables |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📁 Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+Travel_app/
+├── backend/
+│   ├── config/          # Database configuration
+│   ├── controllers/     # Route controllers
+│   ├── middleware/      # Auth & error middleware
+│   ├── models/          # Mongoose schemas
+│   ├── routes/          # API routes
+│   ├── seed.js          # Database seeder
+│   └── server.js        # Entry point
+│
+├── client/
+│   ├── public/
+│   │   └── assets/      # Images and static files
+│   └── src/
+│       ├── components/  # React components
+│       ├── context/     # Auth context
+│       ├── pages/       # Page components
+│       ├── services/    # API service
+│       └── App.js       # Main app component
+│
+└── README.md
+```
 
-### `npm run eject`
+## 🚀 Quick Start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
+- Node.js (v14+)
+- MongoDB (local or Atlas)
+- Google Gemini API Key
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1. Clone & Install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+# Clone the repository
+git clone <repository-url>
+cd Travel_app
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Install backend dependencies
+cd backend
+npm install
 
-## Learn More
+# Install frontend dependencies
+cd ../client
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 2. Environment Setup
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Backend (.env)**
+```env
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/travel_app
+JWT_SECRET=your-super-secret-jwt-key-here
+JWT_EXPIRE=7d
+GEMINI_API_KEY=your-gemini-api-key
+```
 
-### Code Splitting
+**Frontend (.env)**
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 3. Seed Database
 
-### Analyzing the Bundle Size
+```bash
+cd backend
+node seed.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This creates:
+- Sample travel services (trips, hotels, buses)
+- Admin user (admin@travel.com / admin123)
 
-### Making a Progressive Web App
+### 4. Run the Application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Start Backend (Terminal 1)**
+```bash
+cd backend
+npm run dev
+```
 
-### Advanced Configuration
+**Start Frontend (Terminal 2)**
+```bash
+cd client
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 5. Access the Application
 
-### Deployment
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:5000/api
+- **Admin Login**: admin@travel.com / admin123
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📡 API Endpoints
 
-### `npm run build` fails to minify
+### Authentication
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/signup` | Register new user |
+| POST | `/api/auth/login` | User login |
+| GET | `/api/auth/profile` | Get user profile |
+| PUT | `/api/auth/profile` | Update profile |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Travel Services
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/travel` | List all services |
+| GET | `/api/travel/:id` | Get service details |
+| POST | `/api/travel` | Create service (Admin) |
+| PUT | `/api/travel/:id` | Update service (Admin) |
+| DELETE | `/api/travel/:id` | Delete service (Admin) |
+
+### Bookings
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/bookings` | Get user bookings |
+| GET | `/api/bookings/:id` | Get booking details |
+| POST | `/api/bookings` | Create booking |
+| PUT | `/api/bookings/:id/cancel` | Cancel booking |
+
+### Reviews
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/reviews/service/:id` | Get service reviews |
+| POST | `/api/reviews` | Create review |
+
+### Chatbot
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/chatbot/chat` | Send message to AI |
+| GET | `/api/chatbot/suggestions` | Get suggested queries |
+
+### Admin
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/admin/dashboard` | Get dashboard stats |
+| GET | `/api/admin/users` | List all users |
+| GET | `/api/bookings/all` | All bookings (Admin) |
+
+## 🎨 Key Components
+
+### Frontend
+- **Header**: Navigation with auth state
+- **Footer**: Site links and contact info
+- **TravelCard**: Service card component
+- **Chatbot**: AI assistant interface
+- **Loader**: Loading state component
+
+### Pages
+- **HomePage**: Hero, search, destinations, packages
+- **SearchPage**: Filters, sorting, results
+- **TravelDetailPage**: Service details, booking
+- **BookingsPage**: User booking history
+- **ProfilePage**: User settings
+- **AdminDashboard**: Admin panel
+- **LoginPage / SignupPage**: Authentication
+
+## 🔐 Security Features
+
+- JWT-based authentication
+- Password hashing with bcrypt
+- Protected API routes
+- Role-based access control
+- Input validation with express-validator
+- CORS configuration
+
+## 📱 Responsive Design
+
+The application is fully responsive and works on:
+- Desktop (1200px+)
+- Tablet (768px - 1024px)
+- Mobile (< 768px)
+
+## 🤖 AI Assistant Features
+
+The chatbot can help with:
+- Finding travel packages
+- Hotel recommendations
+- Bus route information
+- Price comparisons
+- Travel tips and suggestions
+
+## 🚀 Deployment
+
+### Backend (Render)
+1. Connect GitHub repository
+2. Set environment variables
+3. Deploy with `npm install && node server.js`
+
+### Frontend (Netlify/Vercel)
+1. Connect GitHub repository
+2. Set `REACT_APP_API_URL` to deployed backend
+3. Build command: `npm run build`
+4. Publish directory: `build`
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+## 👨‍💻 Author
+
+**Avinash** - Tours and Travel Application
+
+---
+
+Made with ❤️ for travel enthusiasts
